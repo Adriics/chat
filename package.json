@@ -12,10 +12,25 @@
   "type": "commonjs",
   "dependencies": {
     "@types/express": "^5.0.6",
+    "@types/glob": "^8.1.0",
     "@types/node": "^25.5.2",
+    "@types/uuid": "^10.0.0",
+    "compression": "^1.8.1",
+    "dotenv": "^17.4.0",
     "express": "^5.2.1",
+    "glob": "^13.0.6",
+    "helmet": "^8.1.0",
+    "node-dependency-injection": "^3.2.6",
     "nodemon": "^3.1.14",
+    "reflect-metadata": "^0.2.2",
     "socket.io": "^4.8.3",
-    "typescript": "^6.0.2"
+    "typeorm": "^0.3.28",
+    "typescript": "^6.0.2",
+    "uuid": "^13.0.0",
+    "uuid-validate": "^0.0.3"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.8.1",
+    "@types/uuid-validate": "^0.0.3"
   }
 }
