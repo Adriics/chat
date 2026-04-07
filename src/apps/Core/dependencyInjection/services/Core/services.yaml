@@ -3,6 +3,16 @@ services:
     class: src/Contexts/Core/User/infrastructure/persistence/TypeOrmUserRepository
     arguments: ["@Shared.ORM.Connection"]
 
+  User.Login.Authenticator:
+    class: src/Contexts/Core/User/application/Login/Authenticator
+    arguments: ["@User.Repository", "@Shared.TokenGenerator"]
+
+  User.Login.LoginUserQueryHandler:
+    class: src/Contexts/Core/User/application/Login/LoginUserQueryHandler
+    arguments: ["@User.Login.Authenticator"]
+    tags:
+      - { name: "queryHandler" }
+
   User.FindById.FinderById:
     class: src/Contexts/Core/User/application/FindById/FinderById
     arguments: ["@User.Repository"]

@@ -10,7 +10,7 @@ export class RegisterPostController implements Controller {
 
   async run(req: Request, res: Response): Promise<Response> {
     try {
-      const id = String(req.params.id)
+      const id = String(req.body.id)
       const name = String(req.body.name)
       const email = String(req.body.email)
       const password = String(req.body.password)

@@ -15,7 +15,10 @@ export class Password extends StringValueObject {
     return new Password(hashed)
   }
 
-  async compare(hashed: Password): Promise<boolean> {
-    return await argon2.verify(hashed.valueOf(), this.valueOf())
+  static async compare(
+    password: Password,
+    hashedPassword: Password,
+  ): Promise<boolean> {
+    return await argon2.verify(hashedPassword.valueOf(), password.valueOf())
   }
 }
