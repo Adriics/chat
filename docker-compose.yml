@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:17.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: superuser
+      POSTGRES_USER: superuser
+      POSTGRES_DB: chat
+    ports:
+      - 5432:5432

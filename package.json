@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "ts-patch install",
+    "lint": "eslint src/* tests/* --ext .ts,.tsx",
+    "lint:fix": "npm run lint -- --fix --no-error-on-unmatched-pattern",
+    "start:core:server": "npm run migrations:core:run && node dist/src/apps/Core/index",
+    "start:core:server:dev": "cross-env NODE_ENV=development nodemon --config nodemon.config.json -r tsconfig-paths/register src/apps/Core/index.ts",
+    "build": "node ./etc/build/build.js",
+    "test:unit": "cross-env NODE_ENV=test vitest run",
+    "migrations:core:generate": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:generate persistence/migrations/core/core -d src/apps/Core/dataSource -o",
+    "migrations:core:run": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:run -d src/apps/Core/dataSource",
+    "migrations:core:revert": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:revert -d src/apps/Core/dataSource"
   },
   "keywords": [],
   "author": "",
@@ -15,13 +24,16 @@
     "@types/glob": "^8.1.0",
     "@types/node": "^25.5.2",
     "@types/uuid": "^10.0.0",
+    "argon2": "^0.44.0",
     "compression": "^1.8.1",
     "dotenv": "^17.4.0",
     "express": "^5.2.1",
     "glob": "^13.0.6",
     "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
     "node-dependency-injection": "^3.2.6",
     "nodemon": "^3.1.14",
+    "pg": "^8.20.0",
     "reflect-metadata": "^0.2.2",
     "socket.io": "^4.8.3",
     "typeorm": "^0.3.28",
@@ -31,6 +43,9 @@
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",
-    "@types/uuid-validate": "^0.0.3"
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.20.0",
+    "@types/uuid-validate": "^0.0.3",
+    "tsconfig-paths": "^4.2.0"
   }
 }

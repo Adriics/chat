@@ -1,0 +1,24 @@
+services:
+  User.Repository:
+    class: src/Contexts/Core/User/infrastructure/persistence/TypeOrmUserRepository
+    arguments: ["@Shared.ORM.Connection"]
+
+  User.FindById.FinderById:
+    class: src/Contexts/Core/User/application/FindById/FinderById
+    arguments: ["@User.Repository"]
+
+  User.FindById.FindUserByIdQueryHandler:
+    class: src/Contexts/Core/User/application/FindById/FindUserByIdQueryHandler
+    arguments: ["@User.FindById.FinderById"]
+    tags:
+      - { name: "queryHandler" }
+
+  User.Create.Creator:
+    class: src/Contexts/Core/User/application/Create/Creator
+    arguments: ["@User.Repository"]
+
+  User.Create.CreateUserCommandHandler:
+    class: src/Contexts/Core/User/application/Create/CreateUserCommandHandler
+    arguments: ["@User.Create.Creator"]
+    tags:
+      - { name: "commandHandler" }

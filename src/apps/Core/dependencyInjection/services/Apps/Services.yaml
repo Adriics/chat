@@ -1,0 +1,8 @@
+services:
+  Apps.Core.Controllers.RegisterPostController:
+    class: src/apps/Core/controllers/http/User/RegisterPostController
+    arguments: ["@Shared.CommandBus"]
+
+  Apps.Core.Controllers.MySelfGetController:
+    class: src/apps/Core/controllers/http/User/MySelfGetController
+    arguments: ["@Shared.QueryBus", "@Shared.TokenDecoder"]
