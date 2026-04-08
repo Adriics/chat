@@ -3,7 +3,7 @@ import { CommandBus } from "@Shared/domain/CommandBus/CommandBus"
 import { CreateUserCommand } from "@Core/User/application/Create/CreateUserCommand"
 import { UserAlreadyExistsByEmail } from "@Core/User/domain/Errors/UserAlreadyExistsByEmail"
 import { UserAlreadyExistsById } from "@Core/User/domain/Errors/UserAlreadyExistsById"
-import { Controller } from "./@types/Controller"
+import { Controller } from "../../@types/Controller"
 
 export class RegisterPostController implements Controller {
   constructor(private readonly commandBus: CommandBus) {}

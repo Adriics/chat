@@ -3,7 +3,7 @@ import { QueryBus } from "@Shared/domain/QueryBus/QueryBus"
 import { TokenDecoder } from "@Shared/domain/TokenDecoder/TokenDecoder"
 import { FindUserByIdQuery } from "@Core/User/application/FindById/FindUserByIdQuery"
 import { UserResponse } from "@Core/User/application/UserResponse"
-import { Controller } from "./@types/Controller"
+import { Controller } from "../../@types/Controller"
 import { CannotDecode } from "@Shared/domain/TokenDecoder/Errors/CannotDecode"
 
 export class MySelfGetController implements Controller {

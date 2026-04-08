@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { UserAlreadyExistsByEmail } from "@Core/User/domain/Errors/UserAlreadyExistsByEmail"
 import { UserAlreadyExistsById } from "@Core/User/domain/Errors/UserAlreadyExistsById"
-import { Controller } from "./@types/Controller"
+import { Controller } from "../../@types/Controller"
 import { LoginUserQuery } from "@Core/User/application/Login/LoginUserQuery"
 import { QueryBus } from "@Shared/domain/QueryBus/QueryBus"
 import { LoginResponse } from "@Core/User/application/Login/LoginResponse"
